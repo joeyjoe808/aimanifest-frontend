@@ -1,0 +1,383 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Professional IDE Color Palette */
+  --background: hsl(217, 19%, 11%);
+  --foreground: hsl(0, 0%, 95%);
+  --muted: hsl(217, 19%, 13%);
+  --muted-foreground: hsl(0, 0%, 55%);
+  --popover: hsl(217, 19%, 9%);
+  --popover-foreground: hsl(0, 0%, 95%);
+  --card: hsl(217, 19%, 9%);
+  --card-foreground: hsl(0, 0%, 95%);
+  --border: hsl(217, 19%, 18%);
+  --input: hsl(217, 19%, 13%);
+  --primary: hsl(210, 100%, 65%);
+  --primary-foreground: hsl(217, 19%, 11%);
+  --secondary: hsl(217, 19%, 13%);
+  --secondary-foreground: hsl(0, 0%, 75%);
+  --accent: hsl(217, 19%, 13%);
+  --accent-foreground: hsl(0, 0%, 95%);
+  --destructive: hsl(0, 100%, 60%);
+  --destructive-foreground: hsl(0, 0%, 95%);
+  --ring: hsl(210, 100%, 65%);
+  --radius: 0.375rem;
+
+  /* AIMANIFEST Brand Colors - Strategic Minimal Usage */
+  --brand-primary: hsl(210, 29%, 24%); /* #2C3E50 - Dark tech base */
+  --brand-accent: hsl(168, 100%, 36%); /* #00B894 - Agent activity green */
+  --brand-background: hsl(210, 20%, 98%); /* #F9FAFB - Clean interface */
+  --brand-cta: hsl(168, 76%, 42%); /* #1ABC9C - Optimistic, inviting */
+
+  /* Minimal IDE Colors - Clean & Professional */
+  --ide-bg-primary: hsl(0, 0%, 6%); /* Dark neutral base */
+  --ide-bg-secondary: hsl(0, 0%, 8%);
+  --ide-bg-tertiary: hsl(0, 0%, 10%);
+  --ide-text-primary: hsl(0, 0%, 95%);
+  --ide-text-secondary: hsl(0, 0%, 75%);
+  --ide-text-muted: hsl(0, 0%, 55%);
+  --ide-accent-blue: hsl(220, 13%, 69%); /* Subtle blue */
+  --ide-accent-green: var(--brand-accent); /* Only for active states */
+  --ide-accent-orange: hsl(30, 80%, 55%);
+  --ide-accent-red: hsl(0, 70%, 55%);
+  --ide-accent-purple: hsl(270, 50%, 65%);
+  --ide-accent-yellow: hsl(50, 80%, 55%);
+  --ide-border: hsl(0, 0%, 15%);
+  --ide-border-hover: hsl(0, 0%, 20%);
+  --ide-syntax-keyword: hsl(210, 100%, 70%);
+  --ide-syntax-string: hsl(120, 70%, 60%);
+  --ide-syntax-comment: hsl(120, 30%, 50%);
+  --ide-syntax-function: hsl(50, 100%, 75%);
+  --ide-syntax-number: hsl(30, 100%, 70%);
+
+  /* Layout Variables */
+  --ide-sidebar-width: 280px;
+  --ide-header-height: 48px;
+  --ide-status-height: 24px;
+  --ide-tab-height: 36px;
+
+  /* Legacy support */
+  --editor-bg: var(--ide-bg-primary);
+  --panel-bg: var(--ide-bg-secondary);
+  --sidebar-bg: var(--ide-bg-tertiary);
+  --accent-blue: var(--ide-accent-blue);
+  --text-primary: var(--ide-text-primary);
+  --text-secondary: var(--ide-text-secondary);
+  --success: var(--ide-accent-green);
+  --warning: var(--ide-accent-orange);
+  --error: var(--ide-accent-red);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply antialiased bg-background text-foreground;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', 'Cascadia Code', 'SF Mono', Monaco, 'Inconsolata', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', monospace;
+    background: var(--ide-bg-primary);
+    color: var(--ide-text-primary);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  html, #root {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', 'Cascadia Code', monospace;
+  }
+
+  .font-sans {
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  }
+
+  /* Professional IDE Scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--ide-bg-secondary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--ide-border);
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ide-border-hover);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: var(--ide-bg-secondary);
+  }
+
+  /* Firefox scrollbar styling */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--ide-border) var(--ide-bg-secondary);
+  }
+}
+
+@layer components {
+  .ide-layout {
+    @apply h-screen overflow-hidden;
+  }
+
+  .ide-panel {
+    @apply border-r border-gray-700;
+    background-color: var(--panel-bg);
+  }
+
+  .ide-sidebar {
+    @apply border-l border-gray-700;
+    background-color: var(--sidebar-bg);
+  }
+
+  .ide-editor {
+    background-color: var(--editor-bg);
+    color: var(--text-primary);
+  }
+
+  /* Professional IDE Syntax Highlighting */
+  .syntax-highlight .keyword {
+    color: var(--ide-syntax-keyword);
+    font-weight: 500;
+  }
+
+  .syntax-highlight .string {
+    color: var(--ide-syntax-string);
+  }
+
+  .syntax-highlight .comment {
+    color: var(--ide-syntax-comment);
+    font-style: italic;
+  }
+
+  .syntax-highlight .function {
+    color: var(--ide-syntax-function);
+    font-weight: 500;
+  }
+
+  .syntax-highlight .number {
+    color: var(--ide-syntax-number);
+  }
+
+  .syntax-highlight .operator {
+    color: var(--ide-text-secondary);
+  }
+
+  .syntax-highlight .punctuation {
+    color: var(--ide-text-muted);
+  }
+
+  .terminal-output {
+    font-family: 'Fira Code', 'Consolas', monospace;
+    background-color: var(--editor-bg);
+    color: var(--text-primary);
+  }
+
+  /* Professional IDE Layout Components */
+  .ide-header {
+    height: var(--ide-header-height);
+    background: var(--ide-bg-secondary);
+    border-bottom: 1px solid var(--ide-border);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 0.875rem;
+    gap: 1rem;
+  }
+
+  .ide-status-bar {
+    height: var(--ide-status-height);
+    background: var(--ide-bg-secondary);
+    border-top: 1px solid var(--ide-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 0.75rem;
+    color: var(--ide-text-muted);
+  }
+
+  .ide-sidebar-nav {
+    width: 48px;
+    background: var(--ide-bg-secondary);
+    border-right: 1px solid var(--ide-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 0;
+    gap: 0.25rem;
+  }
+
+  .ide-sidebar-panel {
+    width: calc(var(--ide-sidebar-width) - 48px);
+    background: var(--ide-bg-tertiary);
+    border-right: 1px solid var(--ide-border);
+  }
+
+  .ide-tab {
+    height: var(--ide-tab-height);
+    background: var(--ide-bg-tertiary);
+    border-right: 1px solid var(--ide-border);
+    border-bottom: 1px solid var(--ide-border);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .ide-tab:hover {
+    background: var(--ide-bg-primary);
+  }
+
+  .ide-tab.active {
+    background: var(--ide-bg-primary);
+    border-bottom: 2px solid var(--ide-accent-blue);
+  }
+
+  .resize-handle {
+    position: relative;
+    cursor: col-resize;
+  }
+
+  .resize-handle::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: transparent;
+    cursor: col-resize;
+    transition: background-color 0.2s ease;
+  }
+
+  .resize-handle:hover::after {
+    background: var(--ide-accent-blue);
+  }
+
+  .resize-handle-horizontal {
+    position: relative;
+    cursor: row-resize;
+  }
+
+  .resize-handle-horizontal::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 4px;
+    background: transparent;
+    cursor: row-resize;
+    transition: background-color 0.2s ease;
+  }
+
+  .resize-handle-horizontal:hover::after {
+    background: var(--ide-accent-blue);
+  }
+
+  .ai-status-active {
+    @apply w-2 h-2 rounded-full;
+    background-color: var(--success);
+  }
+
+  .ai-status-working {
+    @apply w-2 h-2 rounded-full;
+    background-color: var(--success);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .ai-status-waiting {
+    @apply w-2 h-2 rounded-full;
+    background-color: var(--warning);
+  }
+
+  .ai-status-error {
+    @apply w-2 h-2 rounded-full;
+    background-color: var(--error);
+  }
+
+  .ai-status-monitoring {
+    @apply w-2 h-2 rounded-full;
+    background-color: var(--accent-blue);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@layer utilities {
+  /* Strategic Brand Utilities - Minimal Usage Only */
+  .brand-accent { color: var(--brand-accent); }
+  .brand-cta { background-color: var(--brand-cta); }
+  .brand-text { color: var(--brand-primary); }
+  
+  /* Only for key interactive elements */
+  .hover\:brand-accent:hover { color: var(--brand-accent); }
+  .hover\:brand-cta:hover { background-color: var(--brand-cta); }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 20px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(155, 155, 155, 0.7);
+  }
+}
